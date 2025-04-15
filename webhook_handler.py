@@ -7,21 +7,18 @@ import json
 app = Flask(__name__)
 CORS(app)
 
+@app.route('/', methods=['GET', 'HEAD'])
+def index():
+    return "🟢 Webhook is live!"
+
+
+# === Alpaca Setup ===
 API_KEY = "PKC54XX8LZYGCPCLWF2M"
 API_SECRET = "D6TexlfllS1rahIqMO91tFURVf6YBlh7vFYwnOdC"
 BASE_URL = "https://paper-api.alpaca.markets"
 api = tradeapi.REST(API_KEY, API_SECRET, BASE_URL)
 
 POSITION_FILE = "positions.json"
-
-from flask import Flask, request, jsonify
-from flask_cors import CORS
-import alpaca_trade_api as tradeapi
-import os
-import json
-
-app = Flask(__name__)
-CORS(app)
 
 @app.route('/webhook', methods=['POST'])
 def webhook():
@@ -78,4 +75,6 @@ def webhook():
         return jsonify({"error": str(e)}), 500
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5001)
+    port = int(os.environ.get("PORT", 5000))  # 5000 fallback for local testing
+    app.run(debug=True, host="0.0.0.0", port=port)
+
