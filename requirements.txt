@@ -1,0 +1,4 @@
+flask
+flask-cors
+alpaca-trade-api
+websocket-client
