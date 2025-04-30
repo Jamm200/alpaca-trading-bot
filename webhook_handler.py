@@ -13,8 +13,8 @@ def index():
 
 
 # === Alpaca Setup ===
-API_KEY = "PKC54XX8LZYGCPCLWF2M"
-API_SECRET = "D6TexlfllS1rahIqMO91tFURVf6YBlh7vFYwnOdC"
+API_KEY = "PK0ZSVAY9DKNL7SU8C7C"
+API_SECRET = "xlf6FxklMo4wNM2fAWMRGDQkVett6OQ5pCswhQvb"
 BASE_URL = "https://paper-api.alpaca.markets"
 api = tradeapi.REST(API_KEY, API_SECRET, BASE_URL)
 
